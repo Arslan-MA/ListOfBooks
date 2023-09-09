@@ -1,0 +1,20 @@
+{% extends 'book_app/base.html' %}
+
+{% block navbar_two %}
+{% endblock navbar_two %}
+
+{% block content %}
+    <h1>Страница с спиком книг</h1>
+    <div class="block">
+        {% for book in books %}
+            <div class="element">
+                <p><b>Название:</b><br> {{ book.title }}</p>
+                <p><b>Автор:</b><br> {{ book.author }}</p>
+                <p><b>Жанр:</b><br> {% for genre in book.genre.all %}{{ genre }}<br>{% endfor %}</p>
+                <a href="{% url 'detail_book' book.slug %}"><button class="btn">Перейти</button></a>
+                <a href="{% url 'update_book' book.slug %}"><button class="btn">Обновить</button></a>
+                <a href="{% url 'delete_book' book.slug %}"><button class="btn">Удалить</button></a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

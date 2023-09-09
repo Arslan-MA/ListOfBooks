@@ -1,0 +1,19 @@
+{% extends 'book_app/base.html' %}
+
+{% block navbar_one %}
+{% endblock navbar_one %}
+
+{% block content %}
+    <h1>Станица с добавлением книги</h1>
+    <div class="block_form">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for f in form %}
+                <p>{{ f.label }}</p>
+                <p>{{ f }}</p>
+            {% endfor %}
+            <input type="submit" value="Сохранить" class="btn">
+            <a href="{% url 'list_book' %}"><button class="btn" type="button">Отменить</button></a>
+        </form>
+    </div>
+{% endblock content %}

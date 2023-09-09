@@ -1,0 +1,21 @@
+{% extends 'book_app/base.html' %}
+
+{% block navbar_two %}
+{% endblock navbar_two %}
+
+{% block content %}
+    <h1>Delete Book Page</h1>
+    <div class="block">
+        <p><b>Название:</b><br> {{ book.title }}</p>
+        <p><b>Автор:</b><br> {{ book.author }}</p>
+        <p><b>Год издания: </b><br>{{ book.release }}</p>
+        <p><b>Жанр:</b><br> {% for genre in book.genre.all %}{{ genre }}<br>{% endfor %}</p>
+        <p><b>Рейтинг:</b><br>{{ book.rating }}</p>
+        <p><b>Просмотры:</b><br>{{ book.views }}</p>
+        <form action="" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить" class="btn">
+            <a href="{% url 'list_book' %}"><button type="button" class="btn">Отменить</button></a>
+        </form>
+    </div>
+{% endblock content %}

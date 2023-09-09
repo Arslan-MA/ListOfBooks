@@ -1,0 +1,31 @@
+"""
+URL configuration for exercise project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path
+from book_app.views import *
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', StartPageView.as_view(), name='start_page'),
+    path('add-book/', AddBookPage.as_view(), name='add_book'),
+    path('add-book/add-author/', AddAuthorPage.as_view(), name='add_author'),
+    path('add-book/add-genre/', AddGenrePage.as_view(), name='add_genre'),
+    path('list-book/', ListBookPage.as_view(), name='list_book'),
+    path('detail-book/<slug:slug_param>/', BookDetailPage.as_view(), name='detail_book'),
+    path('update-book/<slug:slug_param>/', BookUpdatePage.as_view(), name='update_book'),
+    path('delete-book/<slug:slug_param>/', BookDeletePage.as_view(), name='delete_book'),
+]

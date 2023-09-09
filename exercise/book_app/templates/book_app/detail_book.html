@@ -1,0 +1,20 @@
+{% extends 'book_app/base.html' %}
+
+{% block navbar_two %}
+{% endblock navbar_two %}
+
+{% block content %}
+    <h1>Detail Book Page</h1>
+    <div class="block">
+        <p><b>Название:</b><br> {{ book.title }}</p>
+        <p><b>Автор:</b><br> {{ book.author }}</p>
+        <p><b>Год издания: </b><br>{{ book.release }}</p>
+        <p><b>Жанр:</b><br> {% for genre in book.genre.all %}{{ genre }}<br>{% endfor %}</p>
+        <p><b>Рейтинг:</b><br>{{ book.rating }}</p>
+        <p><b>Просмотры:</b><br>{{ book.views }}</p>
+        <div>
+            <a href="{% url 'update_book' book.slug %}"><button class="btn">Обновить</button></a>
+            <a href="{% url 'delete_book' book.slug %}"><button class="btn">Удалить</button></a>
+        </div>
+    </div>
+{% endblock content %}

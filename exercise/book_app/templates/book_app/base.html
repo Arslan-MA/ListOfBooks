@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'book_app/css/style.css' %}">
+</head>
+<body>
+
+    {% block navbar_one %}
+        <div class="navbar">
+            <a href="{% url 'start_page' %}"><button  class="nav_btn">Главная страница</button></a>
+            <a href="{% url 'list_book' %}"><button  class="nav_btn">Список книг</button></a>
+            <a href="{% url 'add_book' %}"><button  class="nav_btn">Добавить книгу</button></a>
+        </div>
+    {% endblock navbar_one %}
+
+    {% block navbar_two %}
+        <div class="navbar">
+            <a href="{% url 'start_page' %}"><button class="nav_btn">Главная страница</button></a>
+            <a href="{% url 'list_book' %}"><button class="nav_btn">Список книг</button></a>
+            <a href="{% url 'add_book' %}"><button class="nav_btn">Добавить книгу</button></a>
+            <a href="{% url 'add_author' %}"><button class="nav_btn">Добавить автора</button></a>
+            <a href="{% url 'add_genre' %}"><button class="nav_btn">Добавить жанр</button></a>
+        </div>
+    {% endblock navbar_two %}
+
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>
